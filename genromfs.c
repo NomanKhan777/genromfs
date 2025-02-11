@@ -632,6 +632,7 @@ int alignnode(struct filenode *node, int curroffset, int extraspace)
 			if ((fd = open(node->realname, O_RDBIN)) >= 0) {
 				memset(bigbuf, 0, 16);
 				read(fd, bigbuf, 16);
+				close(fd);
 				checkpos = 0;
 			}
 		} else if (S_ISLNK(node->modes)) {
